@@ -24,15 +24,16 @@ class DocumentProcessor:
             Path("data\pdfs\finanzas_dummies_book.pdf")
         ]
     
-    def load_pdf(self, file_path: Path) -> List:
-        """Load PDF document."""
-        try:
-            logger.info(f"Loading PDF from {file_path}")
-            loader = UnstructuredPDFLoader(str(file_path))
-            return loader.load()
-        except Exception as e:
-            logger.error(f"Error loading PDF: {e}")
-            raise
+    def load_pdf(self) -> List:
+         documents = []
+         for file_path in self.pdf_files:
+             try:
+                logger.info(f"Loading PDF from {file_path}")
+                loader = UnstructuredPDFLoader(str(file_path))
+                documents.extend(loader.load())
+             except Exception as e:
+                logger.error(f"Error loading PDF {file_path}: {e}")
+         return documents
     
     def split_documents(self, documents: List) -> List:
         """Split documents into chunks."""
