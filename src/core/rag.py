@@ -9,7 +9,6 @@ from .llm import LLMManager
 logger = logging.getLogger(__name__)
 
 class RAGPipeline:
-    """Manages the RAG (Retrieval Augmented Generation) pipeline."""
     
     def __init__(self, vector_db: Any, llm_manager: LLMManager):
         self.vector_db = vector_db
@@ -18,7 +17,7 @@ class RAGPipeline:
         self.chain = self._setup_chain()
     
     def _setup_retriever(self) -> MultiQueryRetriever:
-        """Set up the multi-query retriever."""
+        """Configura el recuperador de información multi-consulta."""
         try:
             return MultiQueryRetriever.from_llm(
                 retriever=self.vector_db.as_retriever(),
@@ -30,7 +29,7 @@ class RAGPipeline:
             raise
     
     def _setup_chain(self) -> Any:
-        """Set up the RAG chain."""
+        """Configura la cadena RAG."""
         try:
             return (
                 {"context": self.retriever, "question": RunnablePassthrough()}
@@ -43,7 +42,7 @@ class RAGPipeline:
             raise
     
     def get_response(self, question: str) -> str:
-        """Get response for a question using the RAG pipeline."""
+        """Obtiene una respuesta a partir de la pregunta usando la pipeline RAG."""
         try:
             logger.info(f"Getting response for question: {question}")
             return self.chain.invoke(question)
