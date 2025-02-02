@@ -1,5 +1,4 @@
 ollama==0.4.4
-streamlit==1.40.0
 pdfplumber==0.11.4
 langchain==0.3.14
 langchain-core==0.3.29
