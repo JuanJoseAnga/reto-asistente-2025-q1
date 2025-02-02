@@ -19,9 +19,9 @@ class DocumentProcessor:
         )
         # Archivos PDF fijos (cambia las rutas según tu sistema)
         self.pdf_files = [
-            Path("data\pdfs\Capacitación_Norma_de_Educación_Financiera-10dic2024-21.pdf"),
-            Path("data\pdfs\ed_financiera_cfn.pdf"),
-            Path("data\pdfs\finanzas_dummies_book.pdf")
+            Path("..data/pdfs/Capacitación_Norma_de_Educación_Financiera-10dic2024-21.pdf"),
+            Path("..data/pdfs/ed_financiera_cfn.pdf"),
+            Path("..data/pdfs/finanzas_dummies_book.pdf")
         ]
     
     def load_pdf(self) -> List:
